@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 
 namespace TicTacToe
 {
-    ///https://www.youtube.com/watch?v=QFnyvLnLq-k&t=291s
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -34,16 +33,27 @@ namespace TicTacToe
             IsPlayer1Turn = false;
             Counter = 0;
 
-            Button_0_0.Content = string.Empty;
-            Button_1_0.Content = string.Empty;
-            Button_2_0.Content = string.Empty;
-            Button_0_1.Content = string.Empty;
-            Button_1_1.Content = string.Empty;
-            Button_2_1.Content = string.Empty;
-            Button_0_2.Content = string.Empty;
-            Button_1_2.Content = string.Empty;
-            Button_2_2.Content = string.Empty;
+            Button0.Content = string.Empty;
+            Button1.Content = string.Empty;
+            Button2.Content = string.Empty;
+            Button3.Content = string.Empty;
+            Button4.Content = string.Empty;
+            Button5.Content = string.Empty;
+            Button6.Content = string.Empty;
+            Button7.Content = string.Empty;
+            Button8.Content = string.Empty;
 
+            Button0.Background = Brushes.White;
+            Button1.Background = Brushes.White;
+            Button2.Background = Brushes.White;
+            Button3.Background = Brushes.White;
+            Button4.Background = Brushes.White;
+            Button5.Background = Brushes.White;
+            Button6.Background = Brushes.White;
+            Button7.Background = Brushes.White;
+            Button8.Background = Brushes.White;
+
+            ButtonNewGame.Content = "NewGame";
 
         }
 
@@ -59,87 +69,99 @@ namespace TicTacToe
                 return;
             }
 
-            var button = sender as Button;
-            button.Content = IsPlayer1Turn ? "O" : "X";
 
-            if (CheckIfPlayerWon())
+            var button = sender as Button;
+            
+            if (button == ButtonNewGame)
             {
-                Counter = 9;
+                NewGame();
+            }else
+            {
+                button.Content = IsPlayer1Turn ? "O" : "X";
+                if (CheckIfPlayerWon())
+                {
+                    Counter = 9;
+                }
             }
+          
         }
 
 
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             private bool CheckIfPlayerWon() 
             {
-                //rows
-                if (Button_0_0.Content.ToString() != string.Empty &&
-                    Button_0_0.Content==Button_0_1.Content && Button_0_0.Content == Button_0_2.Content)
-                {
-                    Button_0_0.Background = Brushes.Green;
-                    Button_0_1.Background = Brushes.Green;
-                    Button_0_2.Background = Brushes.Green;
-                    return true;
-                }
-                if (Button_0_0.Content.ToString() != string.Empty &&
-                    Button_0_0.Content.ToString() != string.Empty &&Button_1_0.Content == Button_1_1.Content && Button_1_0.Content == Button_1_2.Content)
-                {
-                    Button_1_0.Background = Brushes.Green;
-                    Button_1_1.Background = Brushes.Green;
-                    Button_1_2.Background = Brushes.Green;
-                    return true;
-                }
-                if (Button_2_0.Content.ToString() != string.Empty &&
-                    Button_2_0.Content == Button_2_1.Content && Button_2_0.Content == Button_2_2.Content)
-                {
-                    Button_2_0.Background = Brushes.Green;
-                    Button_2_1.Background = Brushes.Green;
-                    Button_2_2.Background = Brushes.Green;
-                    return true;
-                }
-                //columns
-                if (Button_0_0.Content.ToString() != string.Empty && 
-                    Button_0_0.Content == Button_1_0.Content && Button_1_0.Content == Button_1_2.Content)
-                {
-                    Button_0_0.Background = Brushes.Green;
-                    Button_1_0.Background = Brushes.Green;
-                    Button_2_0.Background = Brushes.Green;
-                    return true;
-                }
-                if (Button_0_1.Content.ToString() != string.Empty && 
-                    Button_0_1.Content == Button_1_1.Content && Button_1_1.Content == Button_2_1.Content)
-                {
-                    Button_0_1.Background = Brushes.Green;
-                    Button_1_1.Background = Brushes.Green;
-                    Button_2_1.Background = Brushes.Green;
-                    return true;
-                }
-                if (Button_0_2.Content.ToString() != string.Empty && 
-                    Button_0_2.Content == Button_1_2.Content && Button_1_2.Content == Button_2_2.Content)
-                {
-                    Button_0_2.Background = Brushes.Green;
-                    Button_1_2.Background = Brushes.Green;
-                    Button_2_2.Background = Brushes.Green;
-                    return true;
-                }
-                //diagonal - przekatna
-                if (Button_0_0.Content.ToString() != string.Empty &&
-                    Button_0_0.Content == Button_1_1.Content && Button_1_1.Content == Button_2_2.Content)
-                {
-                    Button_0_0.Background = Brushes.Green;
-                    Button_1_1.Background = Brushes.Green;
-                    Button_2_2.Background = Brushes.Green;
-                    return true;
-                }
-                if (Button_0_2.Content.ToString() != string.Empty && 
-                    Button_0_2.Content == Button_1_1.Content && Button_1_1.Content == Button_2_0.Content)
-                {
-                    Button_0_2.Background = Brushes.Green;
-                    Button_1_1.Background = Brushes.Green;
-                    Button_2_0.Background = Brushes.Green;
-                    return true;
-                }
+               //columns
+            if (Button0.Content.ToString() != string.Empty &&
+                Button0.Content==Button1.Content && Button0.Content == Button2.Content)
+            {
+                Button0.Background = Brushes.Green;
+                Button1.Background = Brushes.Green;
+                Button2.Background = Brushes.Green;
+                return true;
+            }
+            if (Button3.Content.ToString() != string.Empty &&
+                Button3.Content == Button4.Content && Button3.Content == Button5.Content)
+            {
+                Button3.Background = Brushes.Green;
+                Button4.Background = Brushes.Green;
+                Button5.Background = Brushes.Green;
+                return true;
+            }
+            if (Button6.Content.ToString() != string.Empty &&
+                Button6.Content == Button7.Content && Button6.Content == Button8.Content)
+            {
+                Button6.Background = Brushes.Green;
+                Button7.Background = Brushes.Green;
+                Button8.Background = Brushes.Green;
+                return true;
+            }
+            //columns
+            if (Button0.Content.ToString() != string.Empty &&
+                Button0.Content == Button3.Content && Button0.Content == Button6.Content)
+            {
+                Button0.Background = Brushes.Green;
+                Button3.Background = Brushes.Green;
+                Button6.Background = Brushes.Green;
+                return true;
+            }
+            if (Button1.Content.ToString() != string.Empty &&
+                Button1.Content == Button4.Content && Button1.Content == Button7.Content)
+            {
+                Button1.Background = Brushes.Green;
+                Button4.Background = Brushes.Green;
+                Button7.Background = Brushes.Green;
+                return true;
+            }
+            if (Button2.Content.ToString() != string.Empty &&
+                Button2.Content == Button5.Content && Button2.Content == Button8.Content)
+            {
+                Button2.Background = Brushes.Green;
+                Button5.Background = Brushes.Green;
+                Button8.Background = Brushes.Green;
+                return true;
+            }
+            //diagonal - przekatna
+            if (Button0.Content.ToString() != string.Empty &&
+                Button0.Content == Button4.Content && Button0.Content == Button8.Content)
+            {
+                Button0.Background = Brushes.Green;
+                Button4.Background = Brushes.Green;
+                Button8.Background = Brushes.Green;
+                return true;
+            }
+            if (Button2.Content.ToString() != string.Empty &&
+                Button2.Content == Button4.Content && Button2.Content == Button6.Content)
+            {
+                Button2.Background = Brushes.Green;
+                Button4.Background = Brushes.Green;
+                Button6.Background = Brushes.Green;
+                return true;
+            }
 
-                return false;
+            return false;
             }
     }
 }
